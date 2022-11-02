@@ -1,23 +1,33 @@
 File Structure:
-    * in compiler device:
+    * in tvm compiler device:
         data/
           - FashionMNIST/  (it can be downloaded in data_process.py)            
         data_process.py
         _gradient.py
         utils.py
         mod_export.py
-
+    * in cpp compiler device:
+        include/
+        cpp_demo_mlp.cc
+        libtvm_runtime.so
     * in training device
         data/
           - fanshionMNIST_data_label
           - fanshionMNIST_data_x
-        include/
-        cpp_demo_mlp.cc
+        exec_file
         libtvm_runtime.so
+        mlp_mod.so
 
 Env Setting:
     * add this directory to LD_LIBRARY_PATH
     * add include/ to CPATH
 
-Compile Demo:
-    * g++ cpp_demo_mlp.cc -L. -ltvm_runtime -o test
+Use g++ to compile demo:
+    * g++ cpp_demo_mlp.cc -L. -ltvm_runtime -o exec_file
+
+How to run:
+    1. Run data_process.py to get the cpp-friendly data. (binary files fanshionMNIST_data_*)
+    2. Use tvm (with relax AD version) to compile and export the mod. (mlp_mod.so)
+    3. Prepare the tvm runtime. (libtvm_runtime.so)
+    4. Use g++ to compile the cpp_demo_mlp.cc and get exec_file.
+    5. Run it in training device.

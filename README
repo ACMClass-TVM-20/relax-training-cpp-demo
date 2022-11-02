@@ -14,7 +14,7 @@ File Structure:
         data/
           - fanshionMNIST_data_label
           - fanshionMNIST_data_x
-        exec_file
+        mlp_mod (bin)
         libtvm_runtime.so
         mlp_mod.so
 
@@ -23,11 +23,11 @@ Env Setting:
     * add include/ to CPATH
 
 Use g++ to compile demo:
-    * g++ cpp_demo_mlp.cc -L. -ltvm_runtime -o exec_file
+    * g++ cpp_demo_mlp.cc -L. -ltvm_runtime -o mlp_mod
 
 How to run:
     1. Run data_process.py to get the cpp-friendly data. (binary files fanshionMNIST_data_*)
     2. Use tvm (with relax AD version) to compile and export the mod. (mlp_mod.so)
     3. Prepare the tvm runtime. (libtvm_runtime.so)
-    4. Use g++ to compile the cpp_demo_mlp.cc and get exec_file.
+    4. Use g++ to compile the cpp_demo_mlp.cc and get bin (mlp_mod).
     5. Run it in training device.

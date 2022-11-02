@@ -1,0 +1,23 @@
+File Structure:
+    * in compiler device:
+        data/
+          - FashionMNIST/  (it can be downloaded in data_process.py)            
+        data_process.py
+        _gradient.py
+        utils.py
+        mod_export.py
+
+    * in training device
+        data/
+          - fanshionMNIST_data_label
+          - fanshionMNIST_data_x
+        include/
+        cpp_demo_mlp.cc
+        libtvm_runtime.so
+
+Env Setting:
+    * add this directory to LD_LIBRARY_PATH
+    * add include/ to CPATH
+
+Compile Demo:
+    * g++ cpp_demo_mlp.cc -L. -ltvm_runtime -o test

@@ -1,0 +1,5 @@
+data
+.pkl_memoize_py3
+__pycache__
+test*
+*.so
